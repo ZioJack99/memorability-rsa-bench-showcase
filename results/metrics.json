@@ -1,0 +1,55 @@
+{
+  "task": "Supervised fMRI-to-memorability decoding, distinct from raw-pattern RSA",
+  "dataset_doi": "10.18112/openneuro.ds005165.v1.0.4",
+  "protocol": "1,000 train videos (3 repeats averaged); 102 test videos (10 repeats averaged); fit separately for 10 participants and 3 predeclared ROIs",
+  "selection": "StandardScaler on training-video means, RidgeCV LOO MSE over 17 alphas from 0.01 to 1e6; no test labels in scaling, training, or hyperparameter selection",
+  "uncertainty": "2,000 test-video bootstrap draws shared across participants; conditional on these participants and fitted models",
+  "training_mean_baseline_test_mse": 0.008182029155911279,
+  "results": [
+    {
+      "roi": "V1v",
+      "mean_subject_pearson_r": 0.29053624264518507,
+      "ci95_test_video_bootstrap_mean_r": [
+        0.18808556671621662,
+        0.39284667702472076
+      ],
+      "mean_subject_spearman_rho": 0.25831349554144445,
+      "mean_subject_r2": 0.048137663120954396,
+      "mean_subject_mse_skill_vs_training_mean": 0.05132638857070112,
+      "mean_subject_score_rdm_rho": 0.0715435198616683,
+      "subjects_with_lower_mse_than_training_mean": 9
+    },
+    {
+      "roi": "hV4",
+      "mean_subject_pearson_r": 0.36724677747094375,
+      "ci95_test_video_bootstrap_mean_r": [
+        0.24672258111359366,
+        0.4764328767076452
+      ],
+      "mean_subject_spearman_rho": 0.357032756388146,
+      "mean_subject_r2": 0.0991484454783106,
+      "mean_subject_mse_skill_vs_training_mean": 0.10216628552413676,
+      "mean_subject_score_rdm_rho": 0.0883754687816473,
+      "subjects_with_lower_mse_than_training_mean": 10
+    },
+    {
+      "roi": "LOC",
+      "mean_subject_pearson_r": 0.5077037390010244,
+      "ci95_test_video_bootstrap_mean_r": [
+        0.3889110458579378,
+        0.6171534811730597
+      ],
+      "mean_subject_spearman_rho": 0.4991670954645436,
+      "mean_subject_r2": 0.22537813264880394,
+      "mean_subject_mse_skill_vs_training_mean": 0.22797310501681664,
+      "mean_subject_score_rdm_rho": 0.15790154184079797,
+      "subjects_with_lower_mse_than_training_mean": 10
+    }
+  ],
+  "limitations": [
+    "fMRI features require observing the brain response; this is not a video-only memorability predictor.",
+    "Averaging 10 test repeats gives more precise test features than averaging 3 train repeats.",
+    "All ROI results are reported; no model/ROI is selected using test performance.",
+    "The original low raw-pattern RSA effects remain valid and are not replaced by this different supervised task."
+  ]
+}
